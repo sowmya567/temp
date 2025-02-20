@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let array = [];
+      function checkUser(){
+        let email=document.getElementById("email").value
+        let pass=document.getElementById("pass").value
+        let len=array.length
+        for(let i=0;i<length;i++){
+            if(array[i].email==email && array[i].pass==pass){
+            document.write("Welcome")
+        }else{
+            document.write("User not found")
+        }
+    }
+
+      }
+      function showLogin(){
+        root.innerHTML=`
+        <h1>Login Form</h1>
+        <p><input type="text" id="email" placeholder="enter the mail" /></p>
+    <p><input type="number" id="pass" placeholder="enter the password" /></p>
+      <button onclick="checkUser()">Log in</button>
+      <button onclick="showForm()">Create Account</button>
+        `
+      }
+      function showForm(){
+ root.innerHTML=`
+ <h1>SignUp Form</h1>
+    <p><input type="text" id="name" placeholder="enter the name" /></p>
+    <p><input type="text" id="email" placeholder="enter the mail" /></p>
+    <p><input type="number" id="pass" placeholder="enter the password" /></p>
+    <p><input type="date" id="dob" placeholder="enter" /></p>
+    <button onclick="f1()">Register</button>`;
+      }
+      function deleteUser(index){
+      array.splice(index,1)
+      showUser()
+      }
+      function showUser() {
+          let length = array.length;
+          let str = "";
+          for (let i = 0; i < length; i++) {
+            str += `<div>
+        ${array[i].name}-
+        ${array[i].email}-
+        ${array[i].pass}-
+        ${array[i].dob} 
+         <button onclick='deleteUser(${i})'>Delete</button>
+         </div>`;
+          }
+          root.innerHTML = str;
+        }
+      function f1() {
+        let a = document.getElementById("name").value;
+        let b = document.getElementById("email").value;
+        let c = document.getElementById("pass").value;
+        let d = document.getElementById("dob").value;
+        //   str= `${a},${b},${c},${d}<br>`
+        //   array.push(str)
+        //   root.innerHTML=`${array}`
+        let user = {
+          name: a,
+          email: b,
+          pass: c,
+          dob: d,
+        }
+        array.push(user);
+        showUser();
+        showLogin();
+      }
+    </script>
+  </head>
+  <body onload="showForm()">
+ 
+    <div id="root"></div>
+  </body>
+</html>
